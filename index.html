@@ -3,7 +3,7 @@
 <body>
 
     <img id="toggleImg" 
-         src="image1.jpeg" 
+         src="image1.png" 
          data-state="1"
          onclick="changeImage()" 
          style="width:1000px; cursor:pointer; transform: rotate(0deg);">
@@ -13,10 +13,10 @@
         var img = document.getElementById('toggleImg');
 
         if (img.dataset.state === "1") {
-            img.src = "image2.jpeg";
+            img.src = "image2.png";
             img.dataset.state = "2";
         } else {
-            img.src = "image1.jpeg";
+            img.src = "image1.png";
             img.dataset.state = "1";
         }
     }
@@ -24,3 +24,4 @@
 
 </body>
 </html>
+
