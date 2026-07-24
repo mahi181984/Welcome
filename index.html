@@ -1,3 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Image Toggle</title>
+
+<style>
+
+html,body{
+    margin:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    touch-action:manipulation;
+    user-select:none;
+    -webkit-user-select:none;
+}
+
+#toggleImg{
+    max-width:100%;
+    max-height:100%;
+    object-fit:contain;
+    cursor:pointer;
+}
+
+#refreshBtn{
+
+    position:fixed;
+    right:25px;
+    bottom:25px;
+
+    width:1.2cm;
+    height:1.2cm;
+
+    background:#7ED6FF;
+    color:#003366;
+
+    border:none;
+    border-radius:0.5cm;
+
+    font-size:34px;
+    font-weight:bold;
+    line-height:1;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.45);
+
+    cursor:pointer;
+
+    transition:transform .1s;
+}
+
+#refreshBtn:active{
+    transform:scale(.90);
+}
+
+</style>
+</head>
+
+<body>
+
+<img id="toggleImg"
+     src="image15.png"
+     alt="Image">
+
+<button id="refreshBtn">*</button>
+
 <script>
 
 const img = document.getElementById("toggleImg");
@@ -5,17 +82,12 @@ const refreshBtn = document.getElementById("refreshBtn");
 
 let changed = false;
 
-// Vibrate whenever the screen is touched
-document.addEventListener("pointerdown", function () {
-
-    if (navigator.vibrate) {
-        navigator.vibrate(30);   // 30 ms vibration
-    }
-
-}, { passive: true });
-
 // Image touch
 img.addEventListener("pointerdown", function () {
+
+    if (navigator.vibrate) {
+        navigator.vibrate(30);
+    }
 
     if (!changed) {
         img.src = "image25.png";
@@ -27,9 +99,16 @@ img.addEventListener("pointerdown", function () {
 // Refresh button
 refreshBtn.addEventListener("pointerdown", function () {
 
+    if (navigator.vibrate) {
+        navigator.vibrate(30);
+    }
+
     img.src = "image15.png";
     changed = false;
 
 });
 
 </script>
+
+</body>
+</html>
