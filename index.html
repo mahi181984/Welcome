@@ -30,7 +30,7 @@ html,body{
     cursor:pointer;
 }
 
-#refreshBtn{
+#backBtn{
 
     position:fixed;
     right:25px;
@@ -45,9 +45,8 @@ html,body{
     border:none;
     border-radius:0.3cm;
 
-    font-size:34px;
+    font-size:28px;
     font-weight:bold;
-    line-height:1;
 
     display:flex;
     justify-content:center;
@@ -60,7 +59,7 @@ html,body{
     transition:transform .1s;
 }
 
-#refreshBtn:active{
+#backBtn:active{
     transform:scale(.90);
 }
 
@@ -73,17 +72,19 @@ html,body{
      src="image15.png"
      alt="Image">
 
-<button id="refreshBtn">*</button>
+<button id="backBtn">&#8592;</button>
 
 <script>
 
 const img = document.getElementById("toggleImg");
-const refreshBtn = document.getElementById("refreshBtn");
+const backBtn = document.getElementById("backBtn");
 
 let changed = false;
 
-// Image touch
-img.addEventListener("pointerdown", function () {
+// Change image on first touch
+img.addEventListener("pointerdown", function (e) {
+
+    e.preventDefault();
 
     if (navigator.vibrate) {
         navigator.vibrate(30);
@@ -96,8 +97,10 @@ img.addEventListener("pointerdown", function () {
 
 });
 
-// Refresh button
-refreshBtn.addEventListener("pointerdown", function () {
+// Back button restores original image
+backBtn.addEventListener("pointerdown", function (e) {
+
+    e.preventDefault();
 
     if (navigator.vibrate) {
         navigator.vibrate(30);
